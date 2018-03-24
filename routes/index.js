@@ -4,6 +4,8 @@ const data = require('../mock-api/db.json');
 
 module.exports = router;
 
+router.use('/user', require('./user'));
+
 router.get('/schedule', (req, res) => {
   res.json(data.schedule);
 });
