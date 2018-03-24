@@ -1,7 +1,14 @@
 import Link from 'next/link';
 import Rating from './Rating';
 
-export default ({ title, description, slug, rating = false }) => (
+const Speaker = ({ speaker, twitter }) =>
+  speaker ? (
+    <p>
+      {speaker} / <a href={`https://twitter.com/${twitter}`}>@{twitter}</a>
+    </p>
+  ) : null;
+
+export default ({ title, description, slug, rating = false, ...props }) => (
   <div className="Session">
     <h2>
       <Link
@@ -12,6 +19,7 @@ export default ({ title, description, slug, rating = false }) => (
       </Link>
     </h2>
     <p>{description}</p>
+    {process.env.SHOW_SPEAKER && <Speaker {...props} />}
     {rating && <Rating value={rating} />}
   </div>
 );

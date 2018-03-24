@@ -1,62 +1,143 @@
-{ "schedule": 
-[
-  {
-    "slug": "rethinking-the-web-platform",
-    "order": 1,
-    "title": "Rethinking the Web Platform",
-    "description":
-      "Evolving the web to improve education, accessibility, performance, productivity, and design."
-  },
-  {
-    "slug":
-      "if-youre-going-out-of-san-francisco-be-sure-to-wear-web-standards-in-your-hair",
-    "order": 2,
-    "title":
-      "If you're going out of San Francisco, be sure to wear Web Standards in your hair",
-    "description":
-      "We do like our Holy Wars, don't we?: tables vs CSS? Responsive vs mdot? React vs Angular? CSS or CSS-in-JS? Let's look at the real issue: getting the free and open web to the other 4 billion people."
-  },
-  {
-    "slug": "how-the-web-sausage-gets-made",
-    "order": 3,
-    "title": "How the web sausage gets made",
-    "description":
-      "They say there's two things you never want to see made: sausages and web standards. Sooooo I'm going to tell you about both! How do browsers work? What are web components even? Everyone's using them and maybe you should too! 🆒🐱🎉"
-  },
-  {
-    "slug": "lessons-learned-sciencing-the-web",
-    "order": 4,
-    "title": "Lessons learned sciencing the web",
-    "description":
-      "Discover what slows down modern apps on mobile and how to fix this."
-  },
-  {
-    "slug": "my-password-doesnt-work",
-    "order": 5,
-    "title": "My Password Doesn't Work!",
-    "description":
-      "Security is important, but it doesn't have to be complex. Let's dispel myths and assuage fear associated with those linchpin of our online lives – passwords – and build toward a more secure and more usable web."
-  },
-  {
-    "slug": "memory-dont-forget-to-take-out-the-garbage",
-    "order": 6,
-    "title": "Memory: Don't Forget to Take Out the Garbage",
-    "description":
-      "JavaScript does a remarkable job of hiding memory management from us. What's going on behind the scenes?"
-  },
-  {
-    "slug": "abstract-art-in-a-time-of-minification",
-    "order": 7,
-    "title": "Abstract art in a time of minification",
-    "description":
-      "aesthetic is a major component of any medium for art, including the web, but one thing that has been bothering me lately is: what happened to \"view source\"? are we destroying aesthetic for the sake of tooling and in spite of access to our industry????¿¿¿¿"
-  },
-  {
-    "slug": "alpha-beta-gamer-dev-mode",
-    "order": 8,
-    "title": "Alpha, Beta, Gamer: Dev Mode",
-    "description":
-      "A live performance of video games and stand up comedy from comedian and coder, including pre prepared web games to play and even creating a video game with the audience on stage in only 10 minutes."
-  }
-]
+{
+  "schedule": [
+    {
+      "break": true,
+      "title": "Registration",
+      "duration": 40,
+      "slug": "_reg"
+    },
+    {
+      "break": true,
+      "slug": "_opening",
+      "title": "Opening remarks",
+      "duration": 10,
+      "description": null,
+      "speaker": null,
+      "twitter": null,
+      "bio": null
+    },
+    {
+      "slug": "rethinking",
+      "title": "Rethinking the Web Platform",
+      "duration": 40,
+      "description":
+        "Evolving the web to improve education, accessibility, performance, productivity, and design.",
+      "speaker": "James Kyle",
+      "twitter": "thejameskyle",
+      "bio":
+        "I dropped out of high school at 16, made email templates for a marketing internship, then started selling WordPress installs for $50"
+    },
+    {
+      "slug": "standards",
+      "title":
+        "If you're going out of San Francisco, be sure to wear Web Standards in your hair",
+      "duration": 40,
+      "description":
+        "We do like our Holy Wars, don't we?: tables vs CSS? Responsive vs mdot? React vs Angular? CSS or CSS-in-JS? Let's look at the real issue: getting the free and open web to the other 4 billion people.",
+      "speaker": "Bruce Lawson",
+      "twitter": "brucel",
+      "bio":
+        "1981, my Physics teacher made up a UK101 kit in a tiny computer room which I could use instead of Physical Exercise. So I programmed games."
+    },
+    {
+      "break": true,
+      "title": "Coffee break (30 mins)",
+      "duration": 30,
+      "slug": "break1"
+    },
+    {
+      "slug": "webcomponents",
+      "title": "How the web sausage gets made",
+      "duration": 40,
+      "description":
+        "They say there's two things you never want to see made: sausages and web standards. Sooooo I'm going to tell you about both! How do browsers work? What are web components even? Everyone's using them and maybe you should too! 🆒🐱🎉",
+      "speaker": "Monica Dinculescu",
+      "twitter": "notwaldorf",
+      "bio":
+        "I found out my mum always won at the QBasic Gorrilas game bc she changed the other player's code to randomly miss. Then she taught me how."
+    },
+    {
+      "slug": "data",
+      "title": "Lessons learned sciencing the web",
+      "duration": 40,
+      "description":
+        "Discover what slows down modern apps on mobile and how to fix this.",
+      "speaker": "Addy Osmani",
+      "twitter": "addyosmani",
+      "bio":
+        "At 16, wrote a web browser in C++ to understand how HTML, CSS and JavaScript worked…15 years later, still learning"
+    },
+    {
+      "break": true,
+      "title": "Lunch break (90 mins)",
+      "duration": 90,
+      "slug": "_lunch"
+    },
+    {
+      "slug": "passwords",
+      "title": "My Password Doesn't Work!",
+      "duration": 40,
+      "description":
+        "Security is important, but it doesn't have to be complex. Let's dispel myths and assuage fear associated with those linchpin of our online lives – passwords – and build toward a more secure and more usable web.",
+      "speaker": "Blaine Cook",
+      "twitter": "blaine",
+      "bio":
+        "A glowing green screen, still fascinating despite its sole output: \"SYNTAX ERROR\"; Years later, the moment I used ATA and ATDT to talk to a friend."
+    },
+    {
+      "slug": "memory",
+      "title": "Memory: Don't Forget to Take Out the Garbage",
+      "duration": 40,
+      "description":
+        "JavaScript does a remarkable job of hiding memory management from us. What's going on behind the scenes?",
+      "speaker": "Katie Fenn",
+      "twitter": "katie_fenn",
+      "bio":
+        "In 2001 I started making post signatures for a Final Fantasy forum, and then started coding new features for the forum itself."
+    },
+    {
+      "break": true,
+      "title": "Cake break (30 mins)",
+      "duration": 30,
+      "slug": "_break2"
+    },
+    {
+      "slug": "art",
+      "title": "Abstract art in a time of minification",
+      "duration": 40,
+      "description":
+        "aesthetic is a major component of any medium for art, including the web, but one thing that has been bothering me lately is: what happened to \"view source\"? are we destroying aesthetic for the sake of tooling and in spite of access to our industry????¿¿¿¿",
+      "speaker": "Jenn Schiffer",
+      "twitter": "jennschiffer",
+      "bio":
+        "my kid laptop had a hangman game written in BASIC and i accessed the source and rigged it to cheat against my half sister!"
+    },
+    {
+      "slug": "comedy",
+      "title": "Alpha, Beta, Gamer: Dev Mode",
+      "duration": 40,
+      "description":
+        "A live performance of video games and stand up comedy from comedian and coder, including pre prepared web games to play and even creating a video game with the audience on stage in only 10 minutes.",
+      "speaker": "Joe Hart",
+      "twitter": "joehart",
+      "bio":
+        "Parents got me Lego Mindstorms for Xmas, used it and got frustrated that the software didn't let me do exactly what I wanted. Thus here I am"
+    },
+    {
+      "break": true,
+      "title": "Closing remarks",
+      "duration": 20,
+      "slug": "_closing"
+    },
+    {
+      "slug": "_party",
+      "break": true,
+      "title": "After Party",
+      "duration": 90,
+      "description": null,
+      "speaker": null,
+      "twitter": null,
+      "bio": null
+    }
+  ]
 }
