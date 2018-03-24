@@ -4,15 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start",
-    "mock-api": "json-server mock-api/db.json --port 3001  --routes mock-api/routes.json"
+    "start": "NODE_ENV=production node server.js",
+    "mock-api":
+      "json-server mock-api/db.json --port 3001  --routes mock-api/routes.json"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.16.3",
     "isomorphic-unfetch": "^2.0.0",
     "next": "^5.0.0",
     "nprogress": "^0.2.0",
