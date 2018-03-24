@@ -14,7 +14,7 @@ app
 
     server.get('/session/:slug', (req, res) => {
       const { slug } = req.params;
-      app.render(req, res, '/session', { slug });
+      app.render(req, res, '/session', { ...req.query, slug });
     });
 
     server.get('*', (req, res) => handle(req, res));

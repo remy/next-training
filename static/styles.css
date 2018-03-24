@@ -1,3 +1,4 @@
+
 * {
   box-sizing: border-box;
 }
@@ -17,6 +18,10 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+select {
+  font-size: 1rem;
 }
 
 a {
@@ -77,4 +82,66 @@ h2,
 h3 {
   font-weight: 500;
   color: #212121;
+}
+
+.Rating {
+  float: left;
+}
+
+/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t
+ follow these rules. Every browser that supports :checked also supports :not(), so
+ it doesn’t make the test unnecessarily selective */
+.Rating:not(:checked) > input {
+  position: absolute;
+  top: -9999px;
+  clip: rect(0, 0, 0, 0);
+}
+
+.Rating:not(:checked) > label {
+  float: right;
+  width: 1.1em;
+  padding: 0 0.1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 200%;
+  line-height: 1.2;
+  color: #ddd;
+  /* text-shadow: 1px 1px #bbb; */
+  /* , 2px 2px #666, 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5); */
+}
+
+.Rating:not(:checked) > label:before {
+  content: '★ ';
+}
+
+.Rating > input:checked ~ label {
+  color: #f70;
+  text-shadow: 1px 1px #c60;
+  /* 2px 2px #940, 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5); */
+}
+
+.Rating:not(:checked) > label:hover,
+.Rating:not(:checked) > label:hover ~ label {
+  color: gold;
+  text-shadow: 1px 1px goldenrod;
+  /* 2px 2px #b57340,
+    0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5); */
+}
+
+.Rating > input:checked + label:hover,
+.Rating > input:checked + label:hover ~ label,
+.Rating > input:checked ~ label:hover,
+.Rating > input:checked ~ label:hover ~ label,
+.Rating > label:hover ~ input:checked ~ label {
+  color: #ea0;
+  text-shadow: 1px 1px goldenrod;
+  /* 2px 2px #b57340,
+    0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5); */
+}
+
+.Rating > label:active {
+  position: relative;
+  top: 2px;
+  left: 2px;
 }
