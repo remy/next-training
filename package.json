@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "isomorphic-unfetch": "^2.0.0",
     "next": "^5.0.0",
     "nprogress": "^0.2.0",
     "react": "^16.2.0",
