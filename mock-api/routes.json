@@ -1,0 +1,3 @@
+{
+  "/schedule/:slug": "/schedule?slug=:slug"
+}

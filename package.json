@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "mock-api":
+      "json-server mock-api/db.json --port 3001  --routes mock-api/routes.json"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +22,7 @@
   },
   "devDependencies": {
     "eslint": "^4.19.1",
-    "eslint-plugin-react": "^7.7.0"
+    "eslint-plugin-react": "^7.7.0",
+    "json-server": "^0.12.1"
   }
 }

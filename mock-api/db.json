@@ -1,0 +1,62 @@
+{ "schedule": 
+[
+  {
+    "slug": "rethinking-the-web-platform",
+    "order": 1,
+    "title": "Rethinking the Web Platform",
+    "description":
+      "Evolving the web to improve education, accessibility, performance, productivity, and design."
+  },
+  {
+    "slug":
+      "if-youre-going-out-of-san-francisco-be-sure-to-wear-web-standards-in-your-hair",
+    "order": 2,
+    "title":
+      "If you're going out of San Francisco, be sure to wear Web Standards in your hair",
+    "description":
+      "We do like our Holy Wars, don't we?: tables vs CSS? Responsive vs mdot? React vs Angular? CSS or CSS-in-JS? Let's look at the real issue: getting the free and open web to the other 4 billion people."
+  },
+  {
+    "slug": "how-the-web-sausage-gets-made",
+    "order": 3,
+    "title": "How the web sausage gets made",
+    "description":
+      "They say there's two things you never want to see made: sausages and web standards. Sooooo I'm going to tell you about both! How do browsers work? What are web components even? Everyone's using them and maybe you should too! 🆒🐱🎉"
+  },
+  {
+    "slug": "lessons-learned-sciencing-the-web",
+    "order": 4,
+    "title": "Lessons learned sciencing the web",
+    "description":
+      "Discover what slows down modern apps on mobile and how to fix this."
+  },
+  {
+    "slug": "my-password-doesnt-work",
+    "order": 5,
+    "title": "My Password Doesn't Work!",
+    "description":
+      "Security is important, but it doesn't have to be complex. Let's dispel myths and assuage fear associated with those linchpin of our online lives – passwords – and build toward a more secure and more usable web."
+  },
+  {
+    "slug": "memory-dont-forget-to-take-out-the-garbage",
+    "order": 6,
+    "title": "Memory: Don't Forget to Take Out the Garbage",
+    "description":
+      "JavaScript does a remarkable job of hiding memory management from us. What's going on behind the scenes?"
+  },
+  {
+    "slug": "abstract-art-in-a-time-of-minification",
+    "order": 7,
+    "title": "Abstract art in a time of minification",
+    "description":
+      "aesthetic is a major component of any medium for art, including the web, but one thing that has been bothering me lately is: what happened to \"view source\"? are we destroying aesthetic for the sake of tooling and in spite of access to our industry????¿¿¿¿"
+  },
+  {
+    "slug": "alpha-beta-gamer-dev-mode",
+    "order": 8,
+    "title": "Alpha, Beta, Gamer: Dev Mode",
+    "description":
+      "A live performance of video games and stand up comedy from comedian and coder, including pre prepared web games to play and even creating a video game with the audience on stage in only 10 minutes."
+  }
+]
+}
