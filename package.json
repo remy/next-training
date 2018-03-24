@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "next": "^5.0.0",
+    "nprogress": "^0.2.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
