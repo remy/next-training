@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
     "mock-api":
-      "json-server mock-api/db.json --port 3001  --routes mock-api/routes.json"
+      "json-server mock-api/db.json --port 3001  --routes mock-api/routes.json",
+    "dev-server": "PORT=3001 router ./routes/index.js"
   },
   "keywords": [],
   "author": "",
@@ -25,6 +26,7 @@
     "babel-eslint": "^8.2.2",
     "eslint": "^4.19.1",
     "eslint-plugin-react": "^7.7.0",
+    "express-router-cli": "^1.5.0",
     "json-server": "^0.12.1"
   }
 }

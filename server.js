@@ -11,6 +11,7 @@ app
     const server = express();
 
     // custom handlers go here…
+    server.use(require('./routes'));
 
     server.get('/session/:slug', (req, res) => {
       const { slug } = req.params;

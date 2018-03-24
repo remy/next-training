@@ -9,10 +9,10 @@ const SessionPage = ({ session, rating }) => (
 );
 
 SessionPage.getInitialProps = async ({ query }) => {
-  const res = await fetch(`http://localhost:3001/schedule?slug=${query.slug}`);
-  const schedule = await res.json();
+  const res = await fetch(`http://localhost:3001/schedule/${query.slug}`);
+  const session = await res.json();
 
-  return { session: schedule[0], rating: query.rating };
+  return { session, rating: query.rating };
 };
 
 export default SessionPage;
