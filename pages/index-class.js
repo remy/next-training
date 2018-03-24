@@ -4,12 +4,12 @@ import Session from '../components/Session';
 import Layout from '../components/Layout';
 
 class Index extends Component {
-  static getInitialProps = async () => {
+  static async getInitialProps() {
     const res = await fetch('http://localhost:3001/schedule');
     const schedule = await res.json();
 
     return { schedule };
-  };
+  }
 
   render() {
     const { schedule } = this.props;

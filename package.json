@@ -7,8 +7,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "mock-api":
-      "json-server mock-api/db.json --port 3001  --routes mock-api/routes.json"
+    "mock-api": "json-server mock-api/db.json --port 3001  --routes mock-api/routes.json"
   },
   "keywords": [],
   "author": "",
