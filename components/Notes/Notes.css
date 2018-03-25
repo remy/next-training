@@ -1,0 +1,16 @@
+.Notes {
+  display: block;
+}
+
+.CodeMirror,
+textarea {
+  width: 100%;
+  font-family: 'ubuntu mono', monospace;
+  font-size: 13px;
+  min-height: 100px;
+  height: auto;
+  border: 2px solid #ccc;
+  padding: 10px;
+  border-radius: 2px;
+  margin-bottom: 10px;
+}

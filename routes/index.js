@@ -1,11 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const data = require('../mock-api/db.json');
+const cors = require('./cors');
 
 module.exports = router;
 
-router.use('/user', require('./user'));
+router.options('*', cors);
+router.use(cors);
 
+router.use('/user', require('./user'));
 router.get('/schedule', (req, res) => {
   res.json(data.schedule);
 });
