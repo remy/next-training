@@ -11,7 +11,9 @@ const SessionPage = ({ session, rating }) => (
 );
 
 SessionPage.getInitialProps = async ({ query, req }) => {
-  const res = await fetch(`${API}/schedule/${query.slug}`);
+  const res = await fetch(`${API}/schedule/${query.slug}`, {
+    mode: 'cors',
+  });
   const session = await res.json();
 
   return { session, rating: query.rating };
