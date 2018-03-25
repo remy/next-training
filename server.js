@@ -1,5 +1,7 @@
 const express = require('express');
 const next = require('next');
+const nextAuth = require('next-auth');
+const nextAuthConfig = require('./next-auth.config');
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
@@ -7,6 +9,8 @@ const handle = app.getRequestHandler();
 
 app
   .prepare()
+  .then(() => nextAuthConfig())
+  .then(options => nextAuth(app, options))
   .then(() => {
     const server = express();
 

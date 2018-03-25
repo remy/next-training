@@ -1,9 +1,9 @@
 {
   "users": [
     {
-      "user": "rem",
-      "token": "1521916376221",
-      "name": "remy sharp"
+      "id": "73f3773e-bcf5-4db9-810d-f65c51335b3c",
+      "username": "rem",
+      "location": "brighton"
     }
   ]
 }
