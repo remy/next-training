@@ -4,6 +4,11 @@ import Rating from './Rating';
 const Speaker = ({ speaker, twitter }) =>
   speaker ? (
     <p>
+      <style jsx>{`
+        a {
+          font-weight: 800;
+        }
+      `}</style>
       {speaker} / <a href={`https://twitter.com/${twitter}`}>@{twitter}</a>
     </p>
   ) : null;
