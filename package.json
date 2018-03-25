@@ -7,17 +7,18 @@
     "dev": "node server.js",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
-    "mock-api":
-      "json-server mock-api/db.json --port 3001  --routes mock-api/routes.json",
+    "mock-api": "json-server mock-api/db.json --port 3001  --routes mock-api/routes.json",
     "dev-server": "PORT=3001 router ./routes/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@zeit/next-sass": "^0.1.2",
     "express": "^4.16.3",
     "isomorphic-unfetch": "^2.0.0",
     "next": "^5.0.0",
+    "node-sass": "^4.8.3",
     "nprogress": "^0.2.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"

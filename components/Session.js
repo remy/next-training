@@ -1,21 +1,18 @@
 import Link from 'next/link';
 import Rating from './Rating';
 
+import css from './Session.scss';
+
 const Speaker = ({ speaker, twitter }) =>
   speaker ? (
-    <p>
-      <style jsx>{`
-        a {
-          font-weight: 800;
-        }
-      `}</style>
+    <p className={css.Speaker}>
       {speaker} / <a href={`https://twitter.com/${twitter}`}>@{twitter}</a>
     </p>
   ) : null;
 
 export default ({ title, description, slug, rating = false, ...props }) => (
   <div className="Session">
-    <h2>
+    <h2 className="Speaker">
       <Link
         as={`/session/${slug}?rating=4`}
         href={`/session?slug=${slug}&rating=4`}
