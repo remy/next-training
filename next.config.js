@@ -32,7 +32,7 @@ module.exports = withCSS(
 
       return config;
     },
-    exportPathMap: function() {
+    exportPathMap: async function() {
       return {
         '/': { page: '/' },
         '/about': { page: '/about' },

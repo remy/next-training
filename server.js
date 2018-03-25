@@ -1,6 +1,7 @@
 require('@remy/envy');
 const express = require('express');
 const next = require('next');
+const cors = require('cors');
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
