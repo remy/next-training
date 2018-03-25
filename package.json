@@ -7,7 +7,8 @@
     "dev": "node server.js",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
-    "mock-api": "json-server mock-api/db.json --port 3001  --routes mock-api/routes.json",
+    "mock-api":
+      "json-server mock-api/db.json --port 3001  --routes mock-api/routes.json",
     "dev-server": "PORT=3001 router ./routes/index.js"
   },
   "keywords": [],

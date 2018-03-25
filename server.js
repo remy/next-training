@@ -1,3 +1,4 @@
+require('@remy/envy');
 const express = require('express');
 const next = require('next');
 
@@ -10,6 +11,8 @@ app
   .then(() => {
     const server = express();
 
+    server.get('/env', (req, res) => res.json(process.env));
+
     // custom handlers go here…
     server.use(require('./routes'));
 
@@ -20,7 +23,7 @@ app
 
     server.get('*', (req, res) => handle(req, res));
 
-    server.listen(3000, err => {
+    server.listen(process.env.PORT, err => {
       if (err) throw err;
       console.log('> Ready on http://localhost:3000');
     });

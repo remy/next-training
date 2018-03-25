@@ -2,6 +2,8 @@ import Layout from '../components/Layout';
 import Session from '../components/Session';
 import fetch from 'isomorphic-unfetch';
 
+const API = process.env.API || process.env.NOW_URL;
+
 const SessionPage = ({ session, rating }) => (
   <Layout>
     <Session {...session} rating={rating} more={true} />
@@ -15,7 +17,7 @@ SessionPage.getInitialProps = async ({ query, req }) => {
     console.log('IN CLIENT');
   }
 
-  const res = await fetch(`http://localhost:3001/schedule/${query.slug}`);
+  const res = await fetch(`${API}/schedule/${query.slug}`);
   const session = await res.json();
 
   return { session, rating: query.rating };
