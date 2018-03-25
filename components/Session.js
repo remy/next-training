@@ -1,8 +1,37 @@
 import { Fragment } from 'react';
 import Link from 'next/link';
 import Rating from './Rating';
-import Notes from './Notes';
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
 import './Session.css';
+
+const Notes = dynamic({
+  modules: () => {
+    const components = {
+      css1: import('codemirror/lib/codemirror.css'),
+      css2: import('./Notes/Notes.css'),
+      Notes: import('./Notes'),
+    };
+
+    return components;
+  },
+  render: (props, { Notes, css1, css2 }) => {
+    return (
+      <Fragment>
+        <Head>
+          <style>{`
+          ${css1.toString()}
+
+            ${css2.toString()}
+          `}</style>
+        </Head>
+        <Notes {...props} />
+      </Fragment>
+    );
+  },
+  loading: () => <p>Loading notes…</p>,
+  ssr: false,
+});
 
 const Speaker = ({ speaker, twitter }) =>
   speaker ? (
