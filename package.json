@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "node server.js",
-    "build": "next build",
+    "build": "NODE_ENV=production next build && next export",
     "start": "NODE_ENV=production node server.js",
     "mock-api":
       "json-server mock-api/db.json --port 3001  --routes mock-api/routes.json",

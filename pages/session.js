@@ -11,12 +11,6 @@ const SessionPage = ({ session, rating }) => (
 );
 
 SessionPage.getInitialProps = async ({ query, req }) => {
-  if (req) {
-    console.log('ON SERVER');
-  } else {
-    console.log('IN CLIENT');
-  }
-
   const res = await fetch(`${API}/schedule/${query.slug}`);
   const session = await res.json();
 

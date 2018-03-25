@@ -32,5 +32,22 @@ module.exports = withCSS(
 
       return config;
     },
+    exportPathMap: function() {
+      return {
+        '/': { page: '/' },
+        '/about': { page: '/about' },
+        '/contact': { page: '/contact' },
+        '/session/memory': { page: '/session', query: { slug: 'memory' } },
+        '/session/rethinking': {
+          page: '/session',
+          query: { slug: 'rethinking' },
+        },
+        '/session/passwords': {
+          page: '/session',
+          query: { slug: 'passwords' },
+        },
+        '/session/art': { page: '/session', query: { slug: 'art' } },
+      };
+    },
   })
 );
