@@ -1,5 +1,5 @@
 export default ({ value: selected, name = `rating` }) => {
-  return (
+  return selected === undefined ? null : (
     <span className="Rating">
       {Array.from({ length: 5 }).reduce((acc, curr, i) => {
         acc.push(
