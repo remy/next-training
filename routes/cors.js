@@ -1,6 +1,7 @@
 const cors = require('cors');
 module.exports = cors({
-  origin: '*',
+  origin: true,
+  credentials: true,
   allowedHeaders: [
     'Authorization',
     'Origin',

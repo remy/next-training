@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const auth = require('./auth');
 const data = require('../mock-api/db.json');
 const cors = require('./cors');
 
@@ -7,6 +8,8 @@ module.exports = router;
 
 router.options('*', cors);
 router.use(cors);
+
+router.use(auth);
 
 router.use('/user', require('./user'));
 router.get('/schedule', (req, res) => {

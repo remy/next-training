@@ -50,6 +50,7 @@ export default ({
 }) => {
   const More = more ? (
     <Fragment>
+      {process.env.SHOW_SPEAKER && <Speaker {...props} />}
       <Notes url={`/session/${slug}`} />
       <Rating value={rating} />
     </Fragment>
@@ -66,7 +67,6 @@ export default ({
         </Link>
       </h2>
       <p>{description}</p>
-      {process.env.SHOW_SPEAKER && <Speaker {...props} />}
       {More}
     </div>
   );

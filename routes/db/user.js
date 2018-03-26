@@ -1,7 +1,8 @@
-const db = require('../db');
+const db = require('./index');
 const uuid = require('uuid').v4;
+const jwt = require('jsonwebtoken');
 
-const unique = 'username';
+const unique = 'id';
 
 class User {
   constructor(props) {
@@ -32,6 +33,15 @@ class User {
     return user;
   }
 
+  bearer(expiresIn = '1 hour') {
+    const { username, id, avatar } = this;
+    return jwt.sign({ username, id, avatar }, this.apikey, { expiresIn });
+  }
+
+  toObject() {
+    return this._store.value();
+  }
+
   update(values) {
     Object.assign(this, values);
     return this;
@@ -45,19 +55,23 @@ class User {
       return acc;
     }, {});
 
-    console.log('props', props);
-
     if (this._store) {
-      this._store.assign(props).write();
+      this._store = this._store.assign(props);
+      this._store.write();
     } else {
       if (await User.findOne({ [unique]: props[unique] })) {
         return Promise.reject(new Error('DUPLICATE_ENTRY'));
       }
-      this._store = db
+
+      const data = { id: uuid(), ...props, apikey: uuid() };
+      db
         .get('users')
-        .push({ id: uuid(), ...props })
-        .write()
-        .last();
+        .push(data)
+        .write();
+
+      this._store = db.get('users').find(data);
+
+      this.update(this._store.value());
     }
 
     return Promise.resolve(this);

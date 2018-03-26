@@ -1,9 +1,12 @@
 {
   "users": [
     {
-      "id": "73f3773e-bcf5-4db9-810d-f65c51335b3c",
-      "username": "rem",
-      "location": "brighton"
+      "id": 13700,
+      "username": "remy",
+      "avatar": "https://avatars0.githubusercontent.com/u/13700?v=4",
+      "email": "remy@remysharp.com",
+      "name": "Remy Sharp",
+      "apikey": "6976562d-fb65-4f53-866e-7ddea74cb146"
     }
   ]
 }

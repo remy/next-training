@@ -50,12 +50,12 @@ main {
   padding: 10px;
 }
 
-header nav a {
+header nav > * {
   padding: 10px;
   display: inline-block;
   margin-right: 10px;
   color: white;
-  border: 2px solid transparent;
+  /* border: 2px solid transparent; */
 }
 
 header nav a:hover {
