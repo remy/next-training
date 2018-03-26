@@ -26,7 +26,7 @@ module.exports = withCSS(
           'SHOW_SPEAKER',
           'PORT',
           'API',
-          'NOW_URL',
+          // 'NOW_URL',
         ])
       );
 

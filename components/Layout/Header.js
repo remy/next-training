@@ -14,9 +14,11 @@ export default ({ user = {} }) => (
       <Link href="/contact">
         <a>Contact</a>
       </Link>
-      <div className="UserNav">
-        @{user.username} <img src={user.avatar} />
-      </div>
+      {user && (
+        <div className="UserNav">
+          @{user.username} <img src={user.avatar} />
+        </div>
+      )}
     </nav>
   </header>
 );

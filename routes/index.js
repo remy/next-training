@@ -6,7 +6,10 @@ const cors = require('./cors');
 
 module.exports = router;
 
-router.options('*', cors);
+router.options('/*', (req, res) => {
+  res.status(204).send('');
+});
+
 router.use(cors);
 
 router.use(auth);

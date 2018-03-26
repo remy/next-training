@@ -24,11 +24,13 @@
     "@zeit/next-css": "^0.1.5",
     "@zeit/next-sass": "^0.1.2",
     "body-parser": "^1.18.2",
+    "cookie": "^0.3.1",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "isomorphic-unfetch": "^2.0.0",
+    "js-cookie": "^2.2.0",
     "jsonwebtoken": "^8.2.0",
     "lowdb": "^1.0.0",
     "ms": "^2.1.1",
@@ -53,7 +55,7 @@
     "eslint": "^4.19.1",
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-react": "^7.7.0",
-    "express-router-cli": "^1.5.0",
+    "express-router-cli": "^1.5.2",
     "json-server": "^0.12.1"
   }
 }

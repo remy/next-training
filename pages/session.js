@@ -1,12 +1,13 @@
 import Layout from '../components/Layout';
 import Session from '../components/Session';
 import fetch from 'isomorphic-unfetch';
+import withUser from '../hocs/withUser';
 
 const API = process.env.API || process.env.NOW_URL;
 
-const SessionPage = ({ session, rating }) => (
-  <Layout>
-    <Session {...session} rating={rating} more={true} />
+const SessionPage = ({ session, rating, ...props }) => (
+  <Layout {...props}>
+    <Session {...session} rating={rating} more={true} {...props} />
   </Layout>
 );
 
@@ -19,4 +20,4 @@ SessionPage.getInitialProps = async ({ query, req }) => {
   return { session, rating: query.rating };
 };
 
-export default SessionPage;
+export default withUser(SessionPage);
