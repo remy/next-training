@@ -1,10 +1,11 @@
 import fetch from 'isomorphic-unfetch';
 import Session from '../components/Session';
 import Layout from '../components/Layout';
+import withUser from '../hocs/withUser';
 
 const API = process.env.API || process.env.NOW_URL;
 
-const Index = ({ schedule }) => (
+const Index = ({ schedule = [] }) => (
   <Layout>
     <h1>NextConf Schedule Browser</h1>
     {schedule.map(s => <Session key={s.slug} {...s} />)}
@@ -18,4 +19,4 @@ Index.getInitialProps = async () => {
   return { schedule };
 };
 
-export default Index;
+export default withUser(Index);
