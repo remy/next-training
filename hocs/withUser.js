@@ -1,15 +1,32 @@
 import React from 'react';
+import fetch from 'isomorphic-unfetch';
+
+const API = process.env.API;
+
+async function getUser() {
+  const res = await fetch(`${API}/user`, {
+    credentials: 'include',
+  });
+
+  if (res.status === 200) {
+    return res.json();
+  }
+
+  throw new Error(`failed: ${res.status}`);
+}
 
 export default Component => {
   return class extends React.Component {
     static async getInitialProps(ctx) {
       let props = {};
 
+      const user = await getUser();
+
       if (typeof Component.getInitialProps === 'function') {
         props = await Component.getInitialProps(ctx);
       }
 
-      return props;
+      return { ...props, user };
     }
     render() {
       return <Component {...this.props} />;

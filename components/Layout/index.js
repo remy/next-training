@@ -11,13 +11,13 @@ Router.onRouteChangeStart = url => {
 Router.onRouteChangeComplete = () => NProgress.done();
 Router.onRouteChangeError = () => NProgress.done();
 
-export default ({ children, title = 'Nextconf Schedule' }) => (
+export default ({ children, title = 'Nextconf Schedule', ...props }) => (
   <div id="root">
     <Head>
       <title>{title}</title>
       <link rel="stylesheet" href="/static/nprogress.css" />
     </Head>
-    <Header />
+    <Header {...props} />
     <main>{children}</main>
     <Footer />
   </div>

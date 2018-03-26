@@ -5,8 +5,8 @@ import withUser from '../hocs/withUser';
 
 const API = process.env.API || process.env.NOW_URL;
 
-const Index = ({ schedule = [] }) => (
-  <Layout>
+const Index = ({ schedule = [], ...props }) => (
+  <Layout {...props}>
     <h1>NextConf Schedule Browser</h1>
     {schedule.map(s => <Session key={s.slug} {...s} />)}
   </Layout>

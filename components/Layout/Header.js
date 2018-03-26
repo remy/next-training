@@ -1,6 +1,8 @@
 import Link from 'next/link';
 
-export default () => (
+import './Header.css';
+
+export default ({ user = {} }) => (
   <header className="Header">
     <nav>
       <Link href="/">
@@ -12,6 +14,9 @@ export default () => (
       <Link href="/contact">
         <a>Contact</a>
       </Link>
+      <div className="UserNav">
+        @{user.username} <img src={user.avatar} />
+      </div>
     </nav>
   </header>
 );

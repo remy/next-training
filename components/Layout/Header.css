@@ -1,0 +1,25 @@
+.Header {
+  /* display: flex; */
+}
+
+.Header nav {
+  /* flex-grow: 1; */
+}
+
+.Header .UserNav {
+  display: inline-block;
+  float: right;
+  /* padding: 10px; */
+  position: relative;
+  /* color: white; */
+  padding-right: 42px;
+}
+
+.Header img {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 32px;
+}
