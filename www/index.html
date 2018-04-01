@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+<script>document.designMode="on"</script>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="canonical" href="https://next.training.leftlogic.com">
+  <!-- BASIC INFO -->
+  <title>Next.js: Universal JavaScript video training</title>
+  <meta name="author" content="Remy Sharp">
+  <meta name="keywords" content="javascript, react, next.js, universal javascript, isomorphic, video, training, course">
+  <meta name="description" content="Video Universal JavaScript training by Remy Sharp">
+  <!-- UNFURL -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="next.training.leftlogic.com">
+  <meta property="og:url" content="https://next.training.leftlogic.com">
+  <meta property="og:title" content="Next.js: Universal JavaScript">
+  <meta property="og:description" content="3 hour video course by Remy Sharp to help you master universal JavaScript today ⛅️">
+  <meta property="og:image" content="https://next.training.leftlogic.com/images/video-preview.jpg">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@rem">
+  <meta name="twitter:creator" content="@rem">
+  <meta name="twitter:title" content="Next.js: Universal JavaScript video training">
+  <meta name="twitter:description" content="3 hour video course by Remy Sharp to help you master universal JavaScript today ⛅️">
+  <meta name="twitter:image" content="https://next.training.leftlogic.com/images/video-preview.jpg">
+  <meta name="twitter:url" content="https://next.training.leftlogic.com">
+  <meta name="twitter:label1" content="What you get">
+  <meta name="twitter:data1" content="27 videos, > 3 hours of content">
+  <meta name="twitter:label2" content="Launch price starting at">
+  <meta name="twitter:data2" content="US$59">
+  <!-- FAVICONS -->
+  <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16" />
+
+  <!-- CSS
+    ================================= -->
+  <!-- GOOGLE FONTS -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+  <!-- LIBRARIES CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/animate.min.css">
+  <!-- SPECIFIC CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- COLORS -->
+  <!-- <link id="color-css" rel="stylesheet" href="css/colors/pink.css"> -->
+  <!-- <link id="color-css" rel="stylesheet" href="css/colors/red.css"> -->
+  <!-- <link id="color-css" rel="stylesheet" href="css/colors/orange.css"> -->
+  <!-- <link id="color-css" rel="stylesheet" href="css/colors/yellow.css"> -->
+  <!--<link id="color-css" rel="stylesheet" href="css/colors/green.css">-->
+  <!-- <link id="color-css" rel="stylesheet" href="css/colors/turquoise.css"> -->
+  <!-- <link id="color-css" rel="stylesheet" href="css/colors/blue.css"> -->
+  <link id="color-css" rel="stylesheet" href="css/colors/var.css">
+
+  <!-- this really isn't best practise at all, but I need jQuery in place to
+       make XHR calls to get the mixpanel/segment to work properly -->
+  <script src="js/jquery-1.11.2.min.js"></script>
+
+  <script type="text/javascript">
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+
+    var xhr = $.ajax({
+      // url: 'http://localhost:3002/api/track',
+      url: 'https://training.leftlogic.com/api/track',
+      xhrFields: {
+        withCredentials: true
+      }
+    });
+
+    var userId = null;
+    xhr.done(function (data) {
+      userId = data.code;
+    }).always(function () {
+      var live = window.location.hostname === 'next.training.leftlogic.com';
+      var gaId = live ?
+        'UA-1656750-46' : // live
+        'UA-1656750-49'; // test
+
+      ga('create', gaId, 'auto');
+      if (userId) ga('set', 'userId', userId);
+
+      // connect google analytics
+      if (live) {
+        ga('require', 'linker');
+        // Instructs the Linker plugin to automatically add linker parameters
+        // to all links and forms pointing to the domain "destination.com".
+        ga('linker:autoLink', 'training.leftlogic.com');
+      }
+
+      ga('send', 'pageview');
+    });
+  </script>
+  <script async src="https://use.fontawesome.com/1aad2be51f.js"></script>
+</head>
+
+<body class="">
+  <div id="document" class="document">
+    <!-- HEADER
+      ================================= -->
+    <header id="header" class="header-section section section-dark navbar navbar-fixed-top">
+
+      <!-- <a class="flash" href="https://training.leftlogic.com/buy/terminal/cli2?coupon=FLASH-SALE"><span>FLASH SALE - Master Package, <strong>just $19 today — click here</strong> to save $80 — ends in <span id="ends-in">8 hours</span> ⏰</a></span> -->
+      <script>
+      var out = document.getElementById('ends-in');
+      var ends = Date.parse('2018-02-13 04:00:00');
+      if (out) setInterval(function () {
+        var d = new Date();
+        d.setTime(ends - Date.now())
+
+        var bits = ['h', 'm', 's'];
+        out.innerHTML = d.toJSON().split('T')[1].slice(0, -3).replace(/:/g, function (all, match, index) {
+          return '<span class="div">' + bits.shift() + '</span>';
+        }) + '<span class="div">' + bits.shift() + '</span>'
+      }, 100);
+      </script>
+
+      <div class="container-fluid">
+
+        <div class="navbar-header navbar-left">
+          <!-- RESPONSIVE MENU BUTTON -->
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- HEADER LOGO -->
+          <a class="navbar-logo navbar-brand anchor-link" href="#hero">
+            <img src="/images/next.svg" alt="next.training" height="20" width="204">
+          </a>
+        </div>
+        <nav id="navigation" class="navigation navbar-collapse collapse navbar-right">
+          <!-- NAVIGATION LINKS -->
+          <ul id="header-nav" class="nav navbar-nav">
+            <li>
+              <a href="#hero" class="hidden">Top</a>
+            </li>
+            <li>
+              <a href="#who">Who is this for?</a>
+            </li>
+            <li>
+              <a href="#learn">What you'll learn</a>
+            </li>
+            <li>
+              <a href="#course-material">Course material</a>
+            </li>
+            <li>
+              <a href="#pricing">Pricing</a>
+            </li>
+            <li hidden>
+              <a href="#subscribe">Free mini course</a>
+            </li>
+            <!-- <li><a href="#faq">FAQ</a></li> -->
+            <li>
+              <a href="https://training.leftlogic.com/login">My account</a>
+              <!-- HEADER ACTION BUTTON -->
+              <li class="header-action-button">
+                <a href="#pricing" class="btn btn-primary">Buy now</a>
+              </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- HERO
+      ================================= -->
+    <section id="hero" class="hero-section hero-layout-simple hero-layout-fullscreen-subscription-form-and-countdown hero-fullscreen section section-dark">
+      <div class="section-background">
+        <!-- IMAGE BACKGROUND -->
+        <div class="section-background-image parallax">
+          <img src="images/hero.png" alt="" style="opacity: 0.3;">
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-content-inner">
+            <h1 class="hero-title">Universal JavaScript<br>with Next.js<br>
+            </h1>
+
+            <div class="hero-features row">
+              <div hidden class="hero-features-left col-md-7">
+                <div class="video-embed">
+                  <!-- VIDEO EMBED FROM VIMEO -->
+                  <iframe id="video-player" class="video-async" data-source="vimeo" data-video="208148012" data-color="f3ae73" allowfullscreen></iframe>
+                  <!-- VIDEO EMBED FROM YOUTUBE -->
+                  <!-- <iframe class="video-async" data-source="youtube" data-video="7UAy8E3e9f8" allowfullscreen></iframe> -->
+                </div>
+              </div>
+              <div class="col-md-offset-2 col-md-8" data-animation="fadeIn">
+                <p class="hero-tagline">Zero configuration, universal JavaScript web apps with Next.js for React. This is a complete video course will get you building apps today.</p>
+                <div class="hero-buttons">
+                  <center>
+                    <a href="#pricing" class="btn btn-lg btn-primary">Get the launch price!</a>
+                  </center>
+                </div>
+                <p hidden>Not ready to buy? Get a
+                  <a href="#subscribe">free mini terminal course</a> to whet your appetite instead!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- HEADLINE
+      ================================= -->
+    <section id="headline" class="headline-section section-gray section">
+      <div class="container">
+        <div class="row">
+          <h2 class="section-heading text-center">What you're saying</h2>
+          <div class="col-md-12 tweet-list">
+            <blockquote data-cards="hidden" class="twitter-tweet" data-lang="en">
+              <p lang="en" dir="ltr">I’ve been digging into
+                <a href="https://t.co/Q7jq5rGZnY">https://t.co/Q7jq5rGZnY</a> by
+                <a href="https://twitter.com/rem">@rem</a> recently: I wish this had existed back when I was learning CLI stuff!</p>&mdash; Harry Roberts (@csswizardry)
+              <a href="https://twitter.com/csswizardry/status/846699447463628800">March 28, 2017</a>
+            </blockquote>
+
+            <blockquote data-cards="hidden" class="twitter-tweet" data-lang="en">
+              <p lang="en" dir="ltr">So
+                <a href="https://twitter.com/rem">@rem</a> has released a brilliant resource for learning the command line:
+                <a href="https://t.co/toMDuq51DL">https://t.co/toMDuq51DL</a> I need this in a big way.</p>&mdash; Brad Frost 🇺🇸 (@brad_frost)
+              <a href="https://twitter.com/brad_frost/status/841704009610231810">March 14, 2017</a>
+            </blockquote>
+
+            <blockquote data-cards="hidden" class="twitter-tweet" data-lang="en">
+              <p lang="en" dir="ltr">If you want to learn the command line, here’s a very, very good course by
+                <a href="https://twitter.com/rem">@rem</a> (not free). Good stuff.
+                <a href="https://t.co/DBLQJ0PjV1">https://t.co/DBLQJ0PjV1</a>
+              </p>&mdash; Smashing Magazine (@smashingmag)
+              <a href="https://twitter.com/smashingmag/status/839879817248010240">March 9, 2017</a>
+            </blockquote>
+
+            <blockquote data-cards="hidden" class="twitter-tweet" data-lang="en">
+              <p lang="en" dir="ltr">If you need to learn the command line,
+                <a href="https://twitter.com/rem">@rem</a> has just released a complete online workshop at
+                <a href="https://t.co/iB1EyQZPIX">https://t.co/iB1EyQZPIX</a> with early bird prices!💣</p>&mdash; Sara Soueidan 🐦 (@SaraSoueidan)
+              <a href="https://twitter.com/SaraSoueidan/status/840206809180844033">March 10, 2017</a>
+            </blockquote>
+
+            <blockquote data-cards="hidden" class="twitter-tweet" data-lang="en">
+              <p lang="en" dir="ltr">If you&#39;re scared of the terminal, you should get this by
+                <a href="https://twitter.com/rem">@rem</a>. no joke, learning to do CLI changed my career
+                <a href="https://t.co/Q5GGxrlE9H">https://t.co/Q5GGxrlE9H</a>
+              </p>&mdash; Owen ⚡️ (@ow)
+              <a href="https://twitter.com/ow/status/858313423167291393">April 29, 2017</a>
+            </blockquote>
+
+            <!-- <blockquote data-cards="hidden" class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Good morning. <a href="https://twitter.com/rem">@rem</a> did a fantastic job here with his new “Terminal Training”. I got it yesterday and I like it: <a href="https://t.co/hsbXUNSjay">https://t.co/hsbXUNSjay</a></p>&mdash; marc thiele (@marcthiele) <a href="https://twitter.com/marcthiele/status/842295963406458880">March 16, 2017</a></blockquote> -->
+
+            <!-- <blockquote data-cards="hidden" class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">This is so smart and well needed for me (and surely you). No-brainer to sign up for:<br>Command line for non-techies <a href="https://t.co/aIeskYnU5C">https://t.co/aIeskYnU5C</a></p>&mdash; Anton Sten 🐶 (@antonsten) <a href="https://twitter.com/antonsten/status/842292230400446465">March 16, 2017</a></blockquote> -->
+
+            <blockquote data-cards="hidden" class="twitter-tweet" data-lang="en">
+              <p lang="en" dir="ltr">
+                <a href="https://t.co/gGB5zUH2Uk">https://t.co/gGB5zUH2Uk</a> from
+                <a href="https://twitter.com/rem">@rem</a> should be an absolute no-brainer purchase. At that price the value you get will GREATLY outweigh
+                the cost.</p>&mdash; Tim Kadlec (@tkadlec)
+              <a href="https://twitter.com/tkadlec/status/841705073260544004">March 14, 2017</a>
+            </blockquote>
+
+            <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+            <div hidden>
+              <p class="headline-text">
+                The command line can be a quick, expressive, and effective way to accomplish many tasks. It's also very friendly; it just
+                waits for your commands and only does what you tell it to. The problem is that many learning materials are
+                not approachable for people with zero command-line knowledge. With these videos,
+                <strong>Remy Sharp</strong> offers you a way to discover a new world of productivity.
+              </p>
+              <p class="attribution">&mdash;
+                <a href="http://www.the-haystack.com/">Stephen Hay</a>, speaker on the subjects of CSS, web accessibility, and (web)design and open web standards
+                and author of Responsive&nbsp;Design&nbsp;Flow</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="who" class="two-cols-description-section section-accent section">
+      <div class="container-fluid two-cols-description-row">
+        <!-- TWO COLS DESCRIPTION TEXT -->
+        <div class="two-cols-description-text" data-animation="fadeInLeft">
+          <div class="hidden-md hidden-lg clear"></div>
+          <div class="section-heading text-center container-fluid">
+            <h2>Who is this for?</h2>
+          </div>
+          <div class="two-cols-description-text-inner">
+            <h3 id="just-open-the-terminal">Developers who are tired of configuration, build tools, spagetti code and who want to focus on building amazing web apps with the latest features.</h3>
+            <p>The Next.js framework for react requires <strong>zero configuration</strong> to get started, and you'll be building your universal JavaScript applications in minutes.</p>
+            <p>You will be expected to be familiar with JavaScript and be comfortable with basic React and JSX concepts. We'll also be using the latest JavaScript features including async/await.</p>
+            <p>And if you're still not sure if this is for you, feel free to
+              <a href="mailto:remy@leftlogic.com?subject=next.training">email me</a> and ask.</p>
+          </div>
+        </div>
+        <div id="numbers" class="two-cols-description-image" data-animation="fadeInRight">
+          <div class="hidden-md hidden-lg clear"></div>
+          <div class="numbers-row row">
+            <div class="col-sm-4 col-md-4">
+              <div class="numbers-item">
+                <div class="numbers-item-counter">
+                  <span class="counter-up">27</span>
+                </div>
+                <div class="numbers-item-caption">Videos</div>
+              </div>
+            </div>
+            <div class="col-sm-4 col-md-4">
+              <div class="numbers-item">
+                <div class="numbers-item-counter">
+                  <span class="counter-up">3</span>
+                </div>
+                <div class="numbers-item-caption">hours
+                  <span id="of-content">of content</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 col-md-4">
+              <div class="numbers-item">
+                <div class="numbers-item-counter">
+                  <span class="counter-up">7</span>
+                </div>
+                <div class="numbers-item-caption">Modules</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- BENEFITS
+      ================================= -->
+    <section id="learn" class="benefits-section section-gray section">
+      <div class="container">
+        <h2 class="section-heading text-center">What you'll learn</h2>
+        <div class="benefits-row row">
+          <!-- BENEFIT -->
+          <div class="col-sm-6 col-md-4">
+            <div class="benefit">
+              <span class="benefit-icon fa fa-terminal" data-animation="bounceIn"></span>
+              <h4 class="benefit-title">ZERO CONFIGURATION START</h4>
+              <p class="benefit-description">Universal server side rendering in a matter of minutes!</p>
+            </div>
+          </div>
+
+          <!-- BENEFIT -->
+          <div class="col-sm-6 col-md-4">
+            <div class="benefit">
+              <span class="benefit-icon fa fa-paint-brush" data-animation="bounceIn"></span>
+              <h4 class="benefit-title">Styling</h4>
+              <p class="benefit-description">From custom error pages to SCSS imports, use the workflow that works for you</p>
+            </div>
+          </div>
+
+          <div class="hidden-md hidden-lg clear"></div>
+
+          <!-- BENEFIT -->
+          <div class="col-sm-6 col-md-4">
+            <div class="benefit">
+              <span class="benefit-icon fa fa-cloud-upload" data-animation="bounceIn"></span>
+              <h4 class="benefit-title">Releasing to the web</h4>
+              <p class="benefit-description">Strategies for both to Node servers and to static CDN hosted services like Netlify</p>
+            </div>
+          </div>
+
+          <div class="hidden-sm clear"></div>
+
+          <!-- BENEFIT -->
+          <div class="col-sm-6 col-md-4">
+            <div class="benefit">
+              <span class="benefit-icon fa fa-wrench" data-animation="bounceIn"></span>
+              <h4 class="benefit-title">Optimization</h4>
+              <p class="benefit-description">Learn how to fine tune what code you run and understand your bundles</p>
+            </div>
+          </div>
+
+          <div class="hidden-md hidden-lg clear"></div>
+          <!-- BENEFIT -->
+          <div class="col-sm-6 col-md-4">
+            <div class="benefit">
+              <span class="benefit-icon fa fa-cubes" data-animation="bounceIn"></span>
+              <h4 class="benefit-title">Data driven</h4>
+              <p class="benefit-description">Fetch data from databases, gotchas and clean URLs</p>
+            </div>
+          </div>
+          <!-- BENEFIT -->
+          <div class="col-sm-6 col-md-4">
+            <div class="benefit">
+              <span class="benefit-icon fa fa-lock" data-animation="bounceIn"></span>
+              <h4 class="benefit-title">Authentication</h4>
+              <p class="benefit-description">Learn strategies for keep uses signed in, and protected content safe.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <!-- TWO COLS DESCRIPTION SECTION
+      ================================= -->
+    <section id="course-material" class="two-cols-description-section section-accent section">
+      <div class="section-heading text-center container-fluid">
+        <h2>Course material</h2>
+      </div>
+      <div class="container-fluid two-cols-description-row">
+        <!-- TWO COLS DESCRIPTION TEXT -->
+        <div class="two-cols-description-text" data-animation="fadeInLeft">
+          <div class="two-cols-description-text-inner">
+            <h3 id="course-material-1">Getting started with Next</h3>
+            <ul class="nice-list">
+              <li>Next: What, why and how (07:03)</li>
+              <li>Our first fully universal JavaScript app (06:03)</li>
+              <li>How routing works (03:46)</li>
+              <li>Link component (04:46)</li>
+              <li>Linting configuration (02:12)</li>
+            </ul>
+            <h3 id="course-material-2">Customising the style</h3>
+            <ul class="nice-list">
+              <li>Common Layout component (06:59)</li>
+              <li>Serving static assets & controlling the Head (05:43)</li>
+              <li>Customising the base document template (03:34)</li>
+              <li>Using Router for progress loading bars (05:30)</li>
+              <li>Custom 404 and error pages (08:37)</li>
+            </ul>
+            <h3 id="course-material-3">Data driven pages</h3>
+            <ul class="nice-list">
+              <li>Data fetching in the client & server (11:30)</li>
+              <li>Capturing query strings for data fetching (07:35)</li>
+              <li>Custom server for "clean", query-less URLs (09:22)</li>
+              <li>Gotcha: lost query params (03:31)</li>
+              <li>Gotcha: live server reloading (06:56)</li>
+              <li>Environment variables (08:03)</li>
+            </ul>
+          </div>
+        </div>
+        <!-- TWO COLS DESCRIPTION IMAGE -->
+        <div class="two-cols-description-text" data-animation="fadeInRight">
+          <!-- <img src="images/backgrounds/two-cols-description-bg.jpg" alt=""> -->
+          <div class="two-cols-description-text-inner">
+            <h3 id="course-material-4">Styles</h3>
+            <ul class="nice-list">
+              <li>CSS in JavaScript: styled-jsx (04:14)</li>
+              <li>Importing SCSS & scoped imports (08:39)</li>
+            </ul>
+            <h3 id="course-material-5">Optimization tasks</h3>
+            <ul class="nice-list">
+              <li>Targetting the client side only (08:49)</li>
+              <li>Dynamic module imports (13:15)</li>
+              <li>Analyizing server & client bundles (08:17)</li>
+            </ul>
+            <h3 id="course-material-6">Deployment strategies</h3>
+            <ul class="nice-list">
+              <li>Dynamic: Zeit's now (05:08)</li>
+              <li>Static deployment with Netlify (09:02)</li>
+              <li>CDN hosted client & dynamic API (03:45)</li>
+            </ul>
+            <h3 id="course-material-7">Authentication</h3>
+            <ul class="nice-list">
+              <li>Higher Order Components with Next (07:23)</li>
+              <li>"withUser" provider & decoding JWT (09:57)</li>
+              <li>Universal user loading technique with cookies (12:43)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- PRICING SECTION
+      ================================= -->
+    <section id="pricing" class="pricing-section section">
+      <div class="container">
+        <h2 class="section-heading text-center">Pricing</h2>
+        <div class="row text-center">
+          <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+            <p>Order your package and take advantage of the
+              <strong>special price.</strong>
+            </p>
+            <p class="closed-caption-icon">Closed capitioning with every video.</lp>
+              <!-- <p class="closing-shout-on-light"><strong>Taking orders from Tuesday 14 March</strong></p> -->
+          </div>
+        </div>
+        <!-- PRICING TABLE -->
+        <div class="pricing-table row">
+          <!-- PRICING PACKAGE 1 -->
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" data-animation="fadeInUp">
+            <div class="pricing-package">
+              <div class="pricing-package-header">
+                <h4 class="price-title">Starter package</h4>
+                <div class="price">
+                  <span class="price-currency">$</span>
+                  <span class="price-number">59</span>
+                  <span class="price-decimal vat">+VAT</span>
+                </div>
+                <div class="price-description">
+                  <strike>Regular price $90</strike>
+                </div>
+              </div>
+              <ul class="pricing-package-items">
+                <li>Access the
+                  <strong>first 20 videos (4 modules)</strong>
+                </li>
+                <li>Stream course on any device</li>
+                <li>Unlimited updates</li>
+              </ul>
+              <div class="buy-button">
+                <a href="https://training.leftlogic.com/buy/terminal/cli1" data-package="cli1" data-price="59" class="btn btn-primary">Get starter package
+                  <span class="buy-price">$59</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- PRICING PACKAGE 2 -->
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" data-animation="fadeInUp">
+            <div class="pricing-package">
+              <div class="pricing-package-header">
+                <h4 class="price-title">Master package</h4>
+                <div class="price">
+                  <span class="price-currency">$</span>
+                  <span class="price-number">99</span>
+                  <span class="price-decimal vat">+VAT</span>
+                </div>
+                <div class="price-description">
+                  <strike>Regular price $170</strike>
+                </div>
+              </div>
+              <ul class="pricing-package-items">
+                <li>Access to
+                  <strong>all 27 videos (7 modules)</strong>
+                </li>
+                <li>Stream
+                  <em>and</em> download DRM-free high resolution on any device</li>
+                <li>Unlimited updates (planned: testing, Next.js upgrades)</li>
+                <li>Github repo with all code from course</li>
+                <li>99 slides presentation with notes</li>
+              </ul>
+              <div class="buy-button">
+                <a data-package="cli2" data-price="99" href="https://training.leftlogic.com/buy/terminal/cli2" class="btn btn-primary">Get master package
+                  <span class="buy-price">$99</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" data-animation="fadeInUp">
+            <div class="pricing-package">
+              <div class="pricing-package-header">
+                <h4 class="price-title">Ultimate</h4>
+                <div class="price">
+                  <span class="price-currency">$</span>
+                  <span class="price-number">799</span>
+                  <span class="price-decimal vat">+VAT</span>
+                </div>
+                <div class="price-description">
+                  <strike>Regular price $1,100</strike>
+                </div>
+              </div>
+              <ul class="pricing-package-items">
+                <li>Everything from Master Package</li>
+                <li><strong>3 x code reviews for Next, React & Node</strong></li>
+                <li>Private Slack access</li>
+                <li>Unlimited updates</li>
+              </ul>
+              <div class="buy-button">
+                <a data-package="cli3" data-price="105" href="https://training.leftlogic.com/buy/terminal/cli3" class="btn btn-primary">Master pkg + ebook
+                  <span class="buy-price">$105</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div hidden class="col-xs-12 col-sm-12 col-md-4 col-lg-4" data-animation="fadeInUp">
+            <div class="pricing-package">
+              <div class="pricing-package-header">
+                <h4 class="price-title">Team license</h4>
+                <div class="price">
+                  <span class="price-currency">$</span>
+                  <span class="price-number">349</span>
+                  <span class="price-decimal vat">+VAT</span>
+                </div>
+              </div>
+              <ul class="pricing-package-items">
+                <li>Purchase a team license for your team to learn and grok the command line. This includes everything in the
+                  Master&nbsp;Package,
+                  <em>except</em> for the ebook.</li>
+                <li>Teams larger than 8 people should
+                  <a href="mailto:info@leftlogic.com?subject=cli+teams">request a custom quote</a>.</li>
+              </ul>
+              <div class="buy-button">
+                <a data-package="cli2team" data-price="349" href="https://training.leftlogic.com/buy/terminal/cli2team" class="btn btn-primary">Get team license
+                  <span class="buy-price">$349</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container text-center">
+        <div class="pricing-package-team">
+          <p>Purchase a team license for your team to learn and grok the command line. This includes everything in the Master&nbsp;Package.
+            Teams larger than 8 people should
+            <a href="mailto:info@leftlogic.com?subject=cli+teams">request a custom quote</a>.</p>
+          <div class="buy-button">
+            <a data-package="cli2team" data-price="349" href="https://training.leftlogic.com/buy/terminal/cli2team" class="btn btn-primary">Get team license
+              <span class="buy-price">$349</span>
+            </a>
+          </div>
+        </div>
+
+        <p>
+          <em>All prices shown in USD</em>
+        </p>
+      </div>
+    </section>
+    <!-- CLOSING
+      ================================= -->
+    <section id="closing" class="closing-section section-dark section">
+      <div class="section-background">
+        <!-- IMAGE BACKGROUND -->
+        <div class="section-background-image parallax" data-stellar-ratio="0.4">
+          <img src="images/closing-bg.jpg" alt="" style="opacity: 0.15;">
+        </div>
+      </div>
+      <div class="container">
+        <h2 class="section-heading text-center">Is it worth it?</h2>
+        <p class="closing-shout">This course allows you to learn at your own pace, avoid travelling and days out of work. A typical in-person workshop
+          <strong>costs over $600</strong>, and with this course, you can return to it over and over again.</p>
+        <p class="closing-shout">I've spent 3 months writing, recording and building this course. Over the last 20 years, I've pulled together my
+          knowledge and experience, which you
+          <em>could</em> scrape from tutorials across the web over weeks and months, or you could learn directly from me in a
+          single day.</p>
+        <div class="buy-button" data-animation="tada">
+          <a href="#pricing" class="anchor-link btn btn-lg btn-primary">Get your course now</a>
+        </div>
+      </div>
+    </section>
+    <!-- ABOUT
+      ================================= -->
+    <section id="about" class="about-section section">
+      <div class="container">
+        <h2 class="section-heading text-center">About Remy Sharp</h2>
+        <div class="about-row row">
+          <!-- DESCRIPTION IMAGE -->
+          <div class="about-image col-md-6" data-animation="fadeIn">
+            <img src="images/remy-sq.jpg" alt="Remy Sharp">
+          </div>
+          <!-- DESCRIPTION TEXT -->
+          <div class="about-text col-md-6">
+            <p class="lead">Remy has been working commercially on the web since 1999, and known for being an expert in JavaScript and debugging.</p>
+            <p>Remy is the founder and curator of
+              <a href="https://ffconf.org">ffconf</a>, the hugely popular UK based JavaScript event. He also ran jQuery for Designers the video tutorials
+              web site and co-authored
+              <em>Introducing HTML5</em> with Bruce Lawson. Most recently he wrote Working the Command Line published by A Book
+              Apart.
+            </p>
+            <p>Whilst he&#39;s not
+              <a href="https://remysharp.com">writing articles</a> or running and
+              <a href="http://lanyrd.com/people/rem/">speaking at conferences</a>, he runs his own development and training company called
+              <a href="http://leftlogic.com">Left Logic</a>. He also built
+              <a href="https://jsbin.com">JS&nbsp;Bin</a>,
+              <a href="http://html5demos.com">HTML5 Demos</a>,
+              <a href="https://github.com/remy/nodemon">nodemon</a>, and many other
+              <a href="https://github.com/remy">projects</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- TESTIMONIAL SLIDER
+      ================================= -->
+    <section id="testimonial-slider" class="testimonial-slider-section section-dark section">
+      <div class="section-background">
+        <!-- IMAGE BACKGROUND -->
+        <div class="section-background-image parallax" data-stellar-ratio="0.4">
+          <img src="images/quotes.png" style="opacity: 0.15;">
+        </div>
+      </div>
+      <div class="container">
+        <h2 class="section-heading text-center hidden">Trusted by Thousands</h2>
+        <div class="testimonial-slider-row row">
+          <div class="col-md-8 col-md-offset-2">
+            <ul class="testimonial-slider rslides" data-speed="800" data-timeout="4000" data-auto="false">
+              <!-- TESTIMONIAL ITEM 3 -->
+              <li class="testimonial-slide">
+                <span class="testimonial-ratings">
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                </span>
+                <blockquote class="testimonial-quote">
+                  <p>Remy's workshop showed me how to do at least three things I'd previously thought were
+                    <strong>impossible</strong>.</p>
+                </blockquote>
+                <cite class="testimonial-cite">James O'Brien, Freelance UX designer</cite>
+              </li>
+              <!-- TESTIMONIAL ITEM 4 -->
+              <li class="testimonial-slide">
+                <span class="testimonial-ratings">
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star-half-o"></span>
+                </span>
+                <blockquote class="testimonial-quote">
+                  <p>I attended Remy's workshop in the past and it was awesome. Would attend again 😄</p>
+                </blockquote>
+                <cite class="testimonial-cite">George Stefanis, Disney</cite>
+              </li>
+              <!-- TESTIMONIAL ITEM 1 -->
+              <li class="testimonial-slide">
+                <span class="testimonial-ratings">
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                </span>
+                <blockquote class="testimonial-quote">
+                  <p>Solid pragmatic immense knowledge about...like anything you would throw at him. Easy to change his plans
+                    to respond to the audience interests.</p>
+                </blockquote>
+                <cite class="testimonial-cite">Stepan Reznikov, Booking.com.</cite>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- FAQ
+      ================================= -->
+    <section id="faq" class="faq-section section">
+      <div class="container">
+        <h2 class="section-heading text-center">Frequently Anticipated Questions</h2>
+        <div class="faq-row row">
+          <div class="col-md-6">
+            <div class="faq-item">
+              <span class="faq-item-icon fa fa-question-circle"></span>
+              <h4 class="faq-item-heading">What format are the videos? How do I watch them?</h4>
+              <div class="faq-item-text">Once you buy a package, you will be mailed access to a course viewer area where you can stream all the videos.
+                The Master Collection will also be able to download them for offline viewing. All the videos were recorded
+                at HD 2560×1440.</div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="faq-item">
+              <span class="faq-item-icon fa fa-question-circle"></span>
+              <h4 class="faq-item-heading">Do you offer a student discount?</h4>
+              <div class="faq-item-text">Absolutely! Send me
+                <a href="mailto:info@leftlogic.com?subject=next.training">an email</a> with some proof that you are a student - such as an ID, acceptance letter, or student email
+                address - and I'll send you a discount code. This applies to anyone in any type of schooling, including evening
+                classes and coding bootcamps!</div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="faq-item">
+              <span class="faq-item-icon fa fa-question-circle"></span>
+              <h4 class="faq-item-heading">What if I'm not satisfied with the course?</h4>
+              <div class="faq-item-text">I'm confident you'll love the courses, I want to make sure you get real value out of the material, which means
+                you are absolutely thrilled! If you aren't satisfied, please get in touch within 10 days with your order
+                number. If you have completed more than 50% of a course or downloaded (rather than stream) all the content,
+                I reserve the right to decline a refund.</div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="faq-item">
+              <span class="faq-item-icon fa fa-question-circle"></span>
+              <h4 class="faq-item-heading">Are there any pre-requisites?</h4>
+              <div class="faq-item-text">In the videos I use a Mac so it'll be easier to follow along, but if you use a Windows or Linux machine everything
+                you learn will be compatible (with the exception of the odd key combination).</div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="faq-item">
+              <span class="faq-item-icon fa fa-question-circle"></span>
+              <h4 class="faq-item-heading">I bought the starter course, loved it, can I upgrade to the master package?</h4>
+              <div class="faq-item-text">Absolutely. If you use the discount code "CLI1" the checkout will validate your purchase and deduct the price
+                of the starter course.</div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="faq-item">
+              <span class="faq-item-icon fa fa-question-circle"></span>
+              <h4 class="faq-item-heading">I can't use Stripe, can I use X to pay instead?</h4>
+              <div class="faq-item-text">Get in touch via
+                <a href="mailto:info@leftlogic.com?subject=next.training">email</a> and we'll work something out so that you're able to purchase the training material.</div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="faq-item">
+              <span class="faq-item-icon fa fa-question-circle"></span>
+              <h4 class="faq-item-heading">I have another question!</h4>
+              <div class="faq-item-text">No problem, just drop me an email me at
+                <a href="mailto:remy@leftlogic.com">remy@leftlogic.com</a>.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section hidden id="subscribe" class="section section-dark">
+      <!-- SUBSCRIPTION FORM -->
+      <div class="section-background">
+        <!-- IMAGE BACKGROUND -->
+        <div class="section-background-image parallax">
+          <img src="images/hero.png" alt="" style="opacity: 0.3; width: 1295.67px; height: 1143px; margin-top: 0px; margin-left: -379.835px;">
+        </div>
+      </div>
+      <div class="container">
+        <h2 class="section-heading text-center">Subscribe for a free mini course of tips and insights</h2>
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <script async id="_ck_221313" src="https://forms.convertkit.com/221313?v=6&3"></script>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- FOOTER
+      ================================= -->
+    <section id="footer" class="footer-section section">
+      <div class="container">
+        <div class="buy-button">
+          <a href="#pricing" class="anchor-link btn btn-lg btn-primary">
+            <span class="btn-hide">Master Universal JavaScript: </span>get your course today</a>
+        </div>
+      </div>
+      <div class="container">
+        <h3 class="footer-logo">
+          <p class="logo-type">
+            <span class="p-tilde">&lt;</span>
+            <span class="p-name">Next.js</span>
+            <span class="p-tilde"> /&gt;</span>
+          </p>
+        </h3>
+        <div class="footer-socmed">
+          <a href="https://twitter.com/rem" target="_blank">
+            <span class="fa fa-twitter"></span>
+          </a>
+          <a href="https://github.com/remy" target="_blank">
+            <span class="fa fa-github"></span>
+          </a>
+          <a href="https://remysharp.com" target="_blank">
+            <span class="fa fa-pencil"></span>
+          </a>
+        </div>
+        <div class="footer-copyright">
+          &copy; <span id="year">2017</span> Remy Sharp, Left Logic Ltd.
+          <script>document.getElementById('year').innerHTML = new Date().getYear() + 1900</script>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- LIBRARIES JS
+    ================================= -->
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/respimage.min.js"></script>
+  <script src="js/jquery.nav.min.js"></script>
+  <script src="js/responsiveslides.min.js"></script>
+  <!-- MAIN SCRIPT
+    ================================= -->
+  <script src="js/script.js"></script>
+</body>
+
+</html>
