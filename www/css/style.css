@@ -752,6 +752,7 @@ iframe {
 .navbar-nav > li > a,
 .navbar-inverse .navbar-nav > li > a {
   color: #ccc;
+  border-color: rgb(204,204,204);
 }
 .navbar-default .navbar-nav > li > a {
   color: #444;
@@ -2195,11 +2196,13 @@ iframe {
 }
 .rslides_tabs li a {
   display: inline-block;
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 16px;
   font-size: 12px;
   line-height: 1;
   overflow: hidden;
+  cursor: pointer;
+  border-bottom: 0;
 }
 .rslides_tabs li a:before {
   content: '';
