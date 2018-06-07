@@ -178,14 +178,14 @@ iframe {
 }
 .nice-list li {
   position: relative;
-  padding: 8px 0 8px 40px;
+  padding: 1px 0 1px 30px;
 }
 .nice-list li:before {
   content: '\f105';
   position: absolute;
   top: 0;
   left: 0;
-  margin: 10px 0 0 10px;
+  margin: 4px 0 0 10px;
   font-family: 'FontAwesome';
   font-size: 20px;
   line-height: 1;
