@@ -112,17 +112,75 @@
 
       <!-- <a class="flash" href="https://training.leftlogic.com/buy/next/NXT?coupon=EARLY-BIRD"><span>FIRST 100 Master Package, <strong>just $19 today — click here</strong> to save $80 — ends in <span id="ends-in">8 hours</span> ⏰</a></span> -->
       <script>
-      var out = document.getElementById('ends-in');
-      var ends = Date.parse('2018-02-13 04:00:00');
-      if (out) setInterval(function () {
-        var d = new Date();
-        d.setTime(ends - Date.now())
+        function main() {
 
-        var bits = ['h', 'm', 's'];
-        out.innerHTML = d.toJSON().split('T')[1].slice(0, -3).replace(/:/g, function (all, match, index) {
-          return '<span class="div">' + bits.shift() + '</span>';
-        }) + '<span class="div">' + bits.shift() + '</span>'
-      }, 100);
+        }
+      if (window.location.search) {
+        const input = window.location.search.substring(1);
+        var out = document.getElementById('ends-in');
+        const res = {}
+        for (const param of input.split('&')) {
+          let [key, value] = param.replace(/\+/g, ' ').split('=');
+          value = value === undefined ? null : decodeURIComponent(value);
+          res[key] = value;
+        }
+
+        if (res.coupon) {
+          const link = document.createElement('a');
+          link.className="flash";
+          link.href=`https://training.leftlogic.com/buy/next/NEXT?coupon=${res.coupon}`;
+
+          fetch(`https://training.leftlogic.com/api/discount/${res.coupon}/next`).then(res => res.json()).then(res => {
+            let s = '';
+            if (res.percent) {
+              s = `Save ${res.value}%`
+            } else {
+              s = `Save $${res.value}`
+            }
+
+            s += ` with "${res.code}"`
+
+
+            let end = '';
+            if (res.expires) {
+              end = `in <span id="ends-in">…</span> ⏰</a></span>`;
+            } else {
+              end = 'soon';
+            }
+
+            link.innerHTML = `<span>${s} today - click here — ends ${end}</span>`;
+            document.querySelector('#header').appendChild(link);
+
+
+
+              const out = document.querySelector('#ends-in');
+              if (out) setInterval(function () {
+                var ends = res.expires;
+                var d = new Date();
+                d.setTime(ends - Date.now())
+
+                var bits = ['h', 'm', 's'];
+
+                out.innerHTML = d.toJSON().split('T')[1].slice(0, -3).replace(/:/g, function (all, match, index) {
+                  return '<span class="div">' + bits.shift() + '</span>';
+                }) + '<span class="div">' + bits.shift() + '</span>'
+              }, 100);
+          });
+
+        }
+
+      } else {
+        var ends = Date.parse('2018-02-13 04:00:00');
+        if (out) setInterval(function () {
+          var d = new Date();
+          d.setTime(ends - Date.now())
+
+          var bits = ['h', 'm', 's'];
+          out.innerHTML = d.toJSON().split('T')[1].slice(0, -3).replace(/:/g, function (all, match, index) {
+            return '<span class="div">' + bits.shift() + '</span>';
+          }) + '<span class="div">' + bits.shift() + '</span>'
+        }, 100);
+      }
       </script>
 
       <div class="container-fluid">

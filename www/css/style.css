@@ -2756,7 +2756,7 @@ header#header {
   color: #fafafa;
 }
 
-.flash > span {
+.flash:hover > span {
   border-bottom: 2px solid #fafafa;
 }
 
