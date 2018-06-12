@@ -131,6 +131,7 @@
           link.href=`https://training.leftlogic.com/buy/next/NEXT?coupon=${res.coupon}`;
 
           fetch(`https://training.leftlogic.com/api/discount/${res.coupon}/next`).then(res => res.json()).then(res => {
+            if (res.error) return;
             let s = '';
             if (res.percent) {
               s = `Save ${res.value}%`
