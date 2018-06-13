@@ -6,6 +6,7 @@
 <html lang="en">
 <!--<![endif]-->
 <!-- <script>document.designMode="on"</script> -->
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -35,7 +36,7 @@
   <meta name="twitter:data2" content="US$59">
   <!-- FAVICONS -->
   <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32" />
-<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16" />
+  <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16" />
 
   <!-- CSS
     ================================= -->
@@ -111,78 +112,7 @@
     <header id="header" class="header-section section section-dark navbar navbar-fixed-top">
 
       <!-- <a class="flash" href="https://training.leftlogic.com/buy/next/NXT?coupon=EARLY-BIRD"><span>FIRST 100 Master Package, <strong>just $19 today — click here</strong> to save $80 — ends in <span id="ends-in">8 hours</span> ⏰</a></span> -->
-      <script>
-        function main() {
-
-        }
-      if (window.location.search) {
-        const input = window.location.search.substring(1);
-        var out = document.getElementById('ends-in');
-        const res = {}
-        for (const param of input.split('&')) {
-          let [key, value] = param.replace(/\+/g, ' ').split('=');
-          value = value === undefined ? null : decodeURIComponent(value);
-          res[key] = value;
-        }
-
-        if (res.coupon) {
-          const link = document.createElement('a');
-          link.className="flash";
-          link.href=`https://training.leftlogic.com/buy/next/NEXT?coupon=${res.coupon}`;
-
-          fetch(`https://training.leftlogic.com/api/discount/${res.coupon}/next`).then(res => res.json()).then(res => {
-            if (res.error) return;
-            let s = '';
-            if (res.percent) {
-              s = `Save ${res.value}%`
-            } else {
-              s = `Save $${res.value}`
-            }
-
-            s += ` with "${res.code}"`
-
-
-            let end = '';
-            if (res.expires) {
-              end = `in <span id="ends-in">…</span> ⏰</a></span>`;
-            } else {
-              end = 'soon';
-            }
-
-            link.innerHTML = `<span>${s} today - click here — ends ${end}</span>`;
-            document.querySelector('#header').appendChild(link);
-
-
-
-              const out = document.querySelector('#ends-in');
-              if (out) setInterval(function () {
-                var ends = res.expires;
-                var d = new Date();
-                d.setTime(ends - Date.now())
-
-                var bits = ['h', 'm', 's'];
-
-                out.innerHTML = d.toJSON().split('T')[1].slice(0, -3).replace(/:/g, function (all, match, index) {
-                  return '<span class="div">' + bits.shift() + '</span>';
-                }) + '<span class="div">' + bits.shift() + '</span>'
-              }, 100);
-          });
-
-        }
-
-      } else {
-        var ends = Date.parse('2018-02-13 04:00:00');
-        if (out) setInterval(function () {
-          var d = new Date();
-          d.setTime(ends - Date.now())
-
-          var bits = ['h', 'm', 's'];
-          out.innerHTML = d.toJSON().split('T')[1].slice(0, -3).replace(/:/g, function (all, match, index) {
-            return '<span class="div">' + bits.shift() + '</span>';
-          }) + '<span class="div">' + bits.shift() + '</span>'
-        }, 100);
-      }
-      </script>
+      <script src="/js/discount.js"></script>
 
       <div class="container-fluid">
 
@@ -245,7 +175,9 @@
       <div class="container">
         <div class="hero-content">
           <div class="hero-content-inner">
-            <h1 class="hero-title">Universal JavaScript<br>with Next.js<br>
+            <h1 class="hero-title">Universal JavaScript
+              <br>with Next.js
+              <br>
             </h1>
 
             <div class="hero-features row">
@@ -258,7 +190,8 @@
                 </div>
               </div>
               <div class="col-md-offset-2 col-md-8" data-animation="fadeIn">
-                <p class="hero-tagline">Zero configuration, universal JavaScript web apps with Next.js for React. This is a complete video course will get you building apps today.</p>
+                <p class="hero-tagline">Zero configuration, universal JavaScript web apps with Next.js for React. This is a complete video course
+                  will get you building apps today.</p>
                 <div class="hero-buttons">
                   <center>
                     <a href="#pricing" class="btn btn-lg btn-primary">Get the launch price!</a>
@@ -280,7 +213,11 @@
       <div class="container">
         <div class="row">
           <h2 class="section-heading text-center">What you're saying</h2>
-          <p><center><em>This is a brand new course, but this is what you kind people have said about my previous work</em></center></p>
+          <p>
+            <center>
+              <em>This is a brand new course, but this is what you kind people have said about my previous work</em>
+            </center>
+          </p>
           <div class="col-md-12 tweet-list">
             <blockquote data-cards="hidden" class="twitter-tweet" data-lang="en">
               <p lang="en" dir="ltr">I’ve been digging into
@@ -357,9 +294,13 @@
             <h2>Who is this for?</h2>
           </div>
           <div class="two-cols-description-text-inner">
-            <h3 id="just-open-the-terminal">Developers who are tired of configuration, build tools, spagetti code and who want to focus on building amazing web apps with the latest features.</h3>
-            <p>The Next.js framework for react requires <strong>zero configuration</strong> to get started, and you'll be building your universal JavaScript applications in minutes.</p>
-            <p>You will be expected to be familiar with JavaScript and be comfortable with basic React and JSX concepts. We'll also be using the latest JavaScript features including async/await.</p>
+            <h3 id="just-open-the-terminal">Developers who are tired of configuration, build tools, spagetti code and who want to focus on building amazing
+              web apps with the latest features.</h3>
+            <p>The Next.js framework for react requires
+              <strong>zero configuration</strong> to get started, and you'll be building your universal JavaScript applications in
+              minutes.</p>
+            <p>You will be expected to be familiar with JavaScript and be comfortable with basic React and JSX concepts. We'll
+              also be using the latest JavaScript features including async/await.</p>
             <p>And if you're still not sure if this is for you, feel free to
               <a href="mailto:remy@leftlogic.com?subject=next.training">email me</a> and ask.</p>
           </div>
@@ -425,12 +366,12 @@
 
           <!-- BENEFIT -->
           <div class="col-sm-6 col-md-4">
-              <div class="benefit">
-                <span class="benefit-icon fa fa-cubes" data-animation="bounceIn"></span>
-                <h4 class="benefit-title">Data driven</h4>
-                <p class="benefit-description">Fetch data from databases, gotchas and clean URLs</p>
-              </div>
+            <div class="benefit">
+              <span class="benefit-icon fa fa-cubes" data-animation="bounceIn"></span>
+              <h4 class="benefit-title">Data driven</h4>
+              <p class="benefit-description">Fetch data from databases, gotchas and clean URLs</p>
             </div>
+          </div>
 
           <div class="hidden-sm clear"></div>
 
@@ -447,12 +388,12 @@
 
           <!-- BENEFIT -->
           <div class="col-sm-6 col-md-4">
-              <div class="benefit">
-                <span class="benefit-icon fa fa-cloud-upload" data-animation="bounceIn"></span>
-                <h4 class="benefit-title">Releasing to the web</h4>
-                <p class="benefit-description">Strategies for both to Node servers and to static CDN hosted services like Netlify</p>
-              </div>
+            <div class="benefit">
+              <span class="benefit-icon fa fa-cloud-upload" data-animation="bounceIn"></span>
+              <h4 class="benefit-title">Releasing to the web</h4>
+              <p class="benefit-description">Strategies for both to Node servers and to static CDN hosted services like Netlify</p>
             </div>
+          </div>
 
 
           <!-- BENEFIT -->
@@ -546,7 +487,7 @@
               <strong>special price.</strong>
             </p> -->
             <!-- <p class="closed-caption-icon">Closed capitioning with every video<br><em>All prices shown in USD</em></p> -->
-              <!-- <p class="closing-shout-on-light"><strong>Taking orders from Tuesday 14 March</strong></p> -->
+            <!-- <p class="closing-shout-on-light"><strong>Taking orders from Tuesday 14 March</strong></p> -->
           </div>
         </div>
         <!-- PRICING TABLE -->
@@ -597,7 +538,8 @@
                 <li>Access to
                   <strong>all 7 modules (27 videos)</strong>
                 </li>
-                <li><strong>Unlimited updates</strong> (planned: testing, Next.js upgrades, redux)</li>
+                <li>
+                  <strong>Unlimited updates</strong> (planned: testing, Next.js upgrades, redux)</li>
                 <li>Stream
                   <em>and</em> download DRM-free high resolution on any device</li>
                 <li>99 page slidedeck with notes</li>
@@ -622,12 +564,12 @@
                   <span class="price-decimal vat">+VAT</span>
                 </div>
                 <div class="price-description">
-                    <strike>Regular price $600</strike>
-                  </div>
+                  <strike>Regular price $600</strike>
+                </div>
               </div>
               <ul class="pricing-package-items">
-                <li>Purchase a team license for your team to learn and grok universal JS with Next. This includes everything in the
-                  Master&nbsp;Package, including unlimited updates.</li>
+                <li>Purchase a team license for your team to learn and grok universal JS with Next. This includes everything
+                  in the Master&nbsp;Package, including unlimited updates.</li>
                 <li>Teams larger than 8 people can
                   <a href="mailto:info@leftlogic.com?subject=next+teams">request a custom quote</a>.</li>
               </ul>
@@ -654,9 +596,14 @@
                 </div>
               </div>
               <ul class="pricing-package-items">
-                <li>All to all <strong>27 videos</strong></li>
-                <li><strong>Everything in Master Package</strong></li>
-                <li>For $10 more: original 19 preview videos, introducing Next and converting an existing Node project to Next and React.</li>
+                <li>All to all
+                  <strong>27 videos</strong>
+                </li>
+                <li>
+                  <strong>Everything in Master Package</strong>
+                </li>
+                <li>For $10 more: original 19 preview videos, introducing Next and converting an existing Node project to Next
+                  and React.</li>
                 <li>Total of 46 videos, over 6 hours of content.</li>
               </ul>
               <div class="buy-button">
@@ -670,8 +617,8 @@
       </div>
       <div class="container text-center">
         <div hidden class="pricing-package-team">
-          <p>Purchase a team license for your team to learn Next.js. This includes everything in the Master&nbsp;Package.
-            Teams larger than 8 people should
+          <p>Purchase a team license for your team to learn Next.js. This includes everything in the Master&nbsp;Package. Teams
+            larger than 8 people should
             <a href="mailto:info@leftlogic.com?subject=next+teams">request a custom quote</a>.</p>
           <div class="buy-button">
             <a data-package="NEXTTEAM" data-price="349" href="https://training.leftlogic.com/buy/next/NEXTTEAM" class="btn btn-primary">Get team license
@@ -681,6 +628,7 @@
         </div>
       </div>
     </section>
+    <script id="marker">updatePrices()</script>
     <!-- CLOSING
       ================================= -->
     <section id="closing" class="closing-section section-dark section">
@@ -772,7 +720,9 @@
                   <span class="fa fa-star-half-o"></span>
                 </span>
                 <blockquote class="testimonial-quote">
-                  <p>Remy was clear in his explanations and did not hesitate to help when needed. <br>[…] the notes he gave us are going to be <strong>very helpful in the future</strong>.</p>
+                  <p>Remy was clear in his explanations and did not hesitate to help when needed.
+                    <br>[…] the notes he gave us are going to be
+                    <strong>very helpful in the future</strong>.</p>
                   <cite class="testimonial-cite">We Got POP, UK</cite>
                 </blockquote>
               </li>
@@ -857,8 +807,8 @@
             <div class="faq-item">
               <span class="faq-item-icon fa fa-question-circle"></span>
               <h4 class="faq-item-heading">I bought the starter course, loved it, can I upgrade to the master package?</h4>
-              <div class="faq-item-text">Absolutely. If you use the discount code "NXTSTART" the checkout will validate your purchase and deduct the price
-                of the starter course.</div>
+              <div class="faq-item-text">Absolutely. If you use the discount code "NXTSTART" the checkout will validate your purchase and deduct the
+                price of the starter course.</div>
             </div>
           </div>
           <div class="col-md-6">
@@ -929,7 +879,8 @@
           </a>
         </div>
         <div class="footer-copyright">
-          &copy; <span id="year">2017</span> Remy Sharp, Left Logic Ltd.
+          &copy;
+          <span id="year">2017</span> Remy Sharp, Left Logic Ltd.
           <script>document.getElementById('year').innerHTML = new Date().getYear() + 1900</script>
         </div>
       </div>

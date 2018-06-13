@@ -72,7 +72,7 @@
     };
 
     // Helper function for sending a message to the player
-    function post(action, value) {
+    var post = function(action, value) {
       var data = {
         method: action,
       };
@@ -81,17 +81,17 @@
       }
       var message = JSON.stringify(data);
       player[0].contentWindow.postMessage(message, playerOrigin);
-    }
+    };
 
-    function onReady() {
+    var onReady = function() {
       post('addEventListener', 'play');
       post('addEventListener', 'pause');
       post('addEventListener', 'finish');
-    }
+    };
 
-    function trackEvent(event) {
+    var trackEvent = function(event) {
       ga('send', 'event', 'All', 'video-' + event, 'introduction');
-    }
+    };
   }
 
   $.ajax({
@@ -324,7 +324,9 @@
       }
     };
 
-    $window.on('scroll', toggleHeaderFloating);
+    $window.on('scroll', function() {
+      requestAnimationFrame(toggleHeaderFloating);
+    });
 
     /**
      * =======================================

@@ -1724,6 +1724,7 @@ iframe {
   font-weight: bold;
   line-height: 0.7;
   letter-spacing: 0.05em;
+  padding-bottom: 40px;
 }
 .price-currency {
   vertical-align: bottom;
@@ -1741,6 +1742,7 @@ iframe {
   padding: 0 30px 26px;
   font-style: italic;
   color: #888;
+  display: none;
 }
 .section-dark .price-description {
   color: #fff;
