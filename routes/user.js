@@ -47,7 +47,7 @@ router.use(async (req, res, next) => {
     const decoded = jwt.decode(token);
 
     if (!decoded) {
-      return;
+      return next();
     }
 
     const user = await User.findOne({ id: decoded.id });
