@@ -36,18 +36,37 @@ async function getUser(token) {
   return null;
 }
 
+export const appWithUser = App => {
+  return class AppWithUser extends React.Component {
+    static async getInitialProps(appContext) {
+      const token = getToken(appContext.ctx);
+      const user = await getUser(token);
+
+      appContext.ctx.user = user;
+
+      let appProps = {};
+      if (typeof App.getInitialProps === 'function') {
+        appProps = await App.getInitialProps.call(App, appContext);
+      }
+
+      return {
+        ...appProps,
+      };
+    }
+
+    render() {
+      return <App {...this.props} />;
+    }
+  };
+};
+
 export default Component => {
   return class extends React.Component {
     static async getInitialProps(ctx) {
       let props = {};
 
       const token = getToken(ctx);
-
-      console.log(token);
-
       const user = await getUser(token);
-
-      console.log(user);
 
       if (typeof Component.getInitialProps === 'function') {
         props = await Component.getInitialProps(ctx);

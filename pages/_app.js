@@ -1,7 +1,8 @@
 import App, { Container } from 'next/app';
 import Layout from '../components/Layout';
+import { appWithUser } from '../hocs/withUser';
 
-export default class MyApp extends App {
+class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {};
 
@@ -9,17 +10,19 @@ export default class MyApp extends App {
       pageProps = await Component.getInitialProps(ctx);
     }
 
-    return { pageProps };
+    return { pageProps: { ...pageProps, user: ctx.user } };
   }
 
   render() {
     const { Component, pageProps } = this.props;
     return (
       <Container>
-        <Layout>
+        <Layout {...pageProps}>
           <Component {...pageProps} />
         </Layout>
       </Container>
     );
   }
 }
+
+export default appWithUser(MyApp);

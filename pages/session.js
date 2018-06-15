@@ -1,7 +1,6 @@
 import Layout from '../components/Layout';
 import Session from '../components/Session';
 import fetch from 'isomorphic-unfetch';
-import withUser from '../hocs/withUser';
 
 const API = process.env.API || process.env.NOW_URL;
 
@@ -11,7 +10,8 @@ const SessionPage = ({ session, rating, ...props }) => (
   </>
 );
 
-SessionPage.getInitialProps = async ({ query }) => {
+SessionPage.getInitialProps = async ({ query, user }) => {
+  console.log('SessionPage.getInitialProps', user);
   const res = await fetch(`${API}/schedule/${query.slug}`, {
     mode: 'cors',
   });
@@ -20,4 +20,4 @@ SessionPage.getInitialProps = async ({ query }) => {
   return { session, rating: query.rating };
 };
 
-export default withUser(SessionPage);
+export default SessionPage;

@@ -1,6 +1,5 @@
 import fetch from 'isomorphic-unfetch';
 import Session from '../components/Session';
-import withUser from '../hocs/withUser';
 import withToken from '../hocs/withToken';
 
 const API = process.env.API || process.env.NOW_URL;
@@ -19,4 +18,4 @@ Index.getInitialProps = async () => {
   return { schedule };
 };
 
-export default withToken(withUser(Index));
+export default withToken(Index);
