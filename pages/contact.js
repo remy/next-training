@@ -1,7 +1,7 @@
 import Layout from '../components/Layout';
 
-export default () => (
-  <Layout title="Contact us">
+export default props => (
+  <Layout title="Contact us" {...props}>
     <h1>Contact</h1>
     <p>There's lots of ways to contact me:</p>
     <ul>

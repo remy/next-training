@@ -1,6 +1,7 @@
 require('@remy/envy');
 const express = require('express');
 const next = require('next');
+const { parse } = require('url');
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
@@ -18,7 +19,11 @@ app
       app.render(req, res, '/session', { ...req.query, slug });
     });
 
-    server.get('*', (req, res) => handle(req, res));
+    server.get('*', (req, res) => {
+      const parsedUrl = parse(req.url, true);
+      const { pathname, query } = parsedUrl;
+      app.render(req, res, pathname, query);
+    });
 
     server.listen(process.env.PORT, err => {
       if (err) throw err;
