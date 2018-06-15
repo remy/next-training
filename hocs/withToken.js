@@ -15,7 +15,7 @@ export default Component => {
     static async getInitialProps(ctx) {
       let props = {};
 
-      const { query, req } = ctx;
+      const { query = {}, req } = ctx;
 
       if (req && query.token) {
         setToken(ctx);

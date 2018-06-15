@@ -34,7 +34,7 @@
     "jsonwebtoken": "^8.2.0",
     "lowdb": "^1.0.0",
     "ms": "^2.1.1",
-    "next": "^5.0.0",
+    "next": "^6.0.3",
     "nick-generator": "^1.0.0",
     "node-sass": "^4.8.3",
     "nprogress": "^0.2.0",
