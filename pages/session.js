@@ -6,12 +6,12 @@ import withUser from '../hocs/withUser';
 const API = process.env.API || process.env.NOW_URL;
 
 const SessionPage = ({ session, rating, ...props }) => (
-  <Layout {...props}>
+  <>
     <Session {...session} rating={rating} more={true} {...props} />
-  </Layout>
+  </>
 );
 
-SessionPage.getInitialProps = async ({ query, req }) => {
+SessionPage.getInitialProps = async ({ query }) => {
   const res = await fetch(`${API}/schedule/${query.slug}`, {
     mode: 'cors',
   });
