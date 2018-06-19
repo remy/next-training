@@ -3,7 +3,11 @@ import fetch from 'isomorphic-unfetch';
 
 const API = process.env.API;
 
-function getToken({ req }) {
+function getToken({ req, token }) {
+  if (token) {
+    return token;
+  }
+
   if (req) {
     const cookie = require('cookie');
 

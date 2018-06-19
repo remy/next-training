@@ -1,6 +1,7 @@
 import App, { Container } from 'next/app';
 import Layout from '../components/Layout';
 import { appWithUser } from '../hocs/withUser';
+import { appWithToken } from '../hocs/withToken';
 
 class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
@@ -25,4 +26,4 @@ class MyApp extends App {
   }
 }
 
-export default appWithUser(MyApp);
+export default appWithToken(appWithUser(MyApp));

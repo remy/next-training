@@ -18,4 +18,4 @@ Index.getInitialProps = async () => {
   return { schedule };
 };
 
-export default withToken(Index);
+export default Index;
