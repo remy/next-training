@@ -18,7 +18,7 @@ function updatePrices() {
       const n = parseInt(el.innerHTML, 10);
       let v;
       if (discount.percent) {
-        v = (n / (100 / discount.value)).toFixed(2);
+        v = (n - n / (100 / discount.value)).toFixed(2);
       } else {
         v = discount.value;
       }
