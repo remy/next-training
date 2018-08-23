@@ -20,7 +20,7 @@ function updatePrices() {
       if (discount.percent) {
         v = (n - n / (100 / discount.value)).toFixed(2);
       } else {
-        v = discount.value;
+        v = n - discount.value / 100;
       }
 
       const [usd, cents] = v.toString().split('.');
@@ -70,19 +70,23 @@ if (window.location.search) {
         if (res.percent) {
           s = `Save ${res.value}%`;
         } else {
-          s = `Save $${res.value}`;
+          s = `Save $${res.value / 100}`;
         }
 
         s += ` with "${res.code}"`;
 
         let end = '';
-        if (res.expires) {
+
+        const now = Date.now();
+        const oneMonth = 28 * 24 * 60 * 60 * 1000;
+
+        if (res.expires && res.expires - now < oneMonth) {
           end = `in <span id="ends-in">…</span> ⏰</a></span>`;
         } else {
           end = 'soon';
         }
 
-        link.innerHTML = `<span>${s} today - click here — ends ${end}</span>`;
+        link.innerHTML = `<span>${s} today — click here — ends ${end}</span>`;
         document.querySelector('#header').appendChild(link);
 
         updatePrices();
