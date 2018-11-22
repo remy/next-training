@@ -60,7 +60,7 @@ if (window.location.search) {
       res.coupon
     }`;
 
-    fetch(`https://training.leftlogic.com/api/discount/${res.coupon}/next`)
+    fetch(`https://training.leftlogic.com/api/discount/${res.coupon}/next/NXT`)
       .then(res => res.json())
       .then(res => {
         window.discount = res;
