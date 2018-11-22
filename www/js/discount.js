@@ -9,6 +9,7 @@ function updatePrices() {
   let selector = '.pricing-table > div';
   if (discount.package !== '*') {
     // change the selector
+    selector = `.pricing-table > #pkg-${discount.package.toLowerCase()}`;
   }
 
   $$(selector)
@@ -20,7 +21,7 @@ function updatePrices() {
       if (discount.percent) {
         v = (n - n / (100 / discount.value)).toFixed(2);
       } else {
-        v = n - discount.value / 100;
+        v = (n - discount.value / 100).toFixed(2);
       }
 
       const [usd, cents] = v.toString().split('.');
@@ -60,7 +61,7 @@ if (window.location.search) {
       res.coupon
     }`;
 
-    fetch(`https://training.leftlogic.com/api/discount/${res.coupon}/next/NXT`)
+    fetch(`https://training.leftlogic.com/api/discount/${res.coupon}/next/NEXT`)
       .then(res => res.json())
       .then(res => {
         window.discount = res;
@@ -114,24 +115,4 @@ if (window.location.search) {
           }, 100);
       });
   }
-} else {
-  var ends = Date.parse('2018-02-13 04:00:00');
-  if (out)
-    setInterval(function() {
-      var d = new Date();
-      d.setTime(ends - Date.now());
-
-      var bits = ['h', 'm', 's'];
-      out.innerHTML =
-        d
-          .toJSON()
-          .split('T')[1]
-          .slice(0, -3)
-          .replace(/:/g, function(all, match, index) {
-            return '<span class="div">' + bits.shift() + '</span>';
-          }) +
-        '<span class="div">' +
-        bits.shift() +
-        '</span>';
-    }, 100);
 }
